@@ -1,0 +1,44 @@
+.toptoolbar {
+  width: 100%;
+}
+
+.topbar {
+  /* background-color: var(--bg-color-primary); */
+  overflow: hidden;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  display: block;
+  font-size: var(--fs-topbar);
+  color: var(--bg-color-secondary);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #111;
+}
+
+.active {
+  font-weight: bold;
+}
