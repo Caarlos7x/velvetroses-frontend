@@ -1,0 +1,15 @@
+/* Versão Mobile */
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+  }
+
+  .email-btn {
+    width: auto;
+  }
+
+  .pulsating-button {
+    width: 100%;
+    text-align: center;
+  }
+}

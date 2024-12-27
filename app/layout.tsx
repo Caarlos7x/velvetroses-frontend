@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The Conspirators | Slash Tribute",
-  description: "Slash Cover é uma banda cover do Slash",
+  title: "Velvet Roses | Slash Tribute",
+  description: "Velvet Roses é uma banda tribuo ao Slash",
 };
 
 export default function RootLayout({

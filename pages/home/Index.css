@@ -45,3 +45,18 @@
     opacity: 1;
   }
 }
+
+
+/* Versão Mobile */
+@media (max-width: 768px) {
+  .hero-img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .hero-light {
+    width: 300px;
+    height: 300px;
+    filter: blur(25px);
+  }
+}

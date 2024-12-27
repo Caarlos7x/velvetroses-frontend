@@ -5,15 +5,27 @@ import './Topbar.css';
 
 export default function Topbar() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClick = (item: string) => {
     setActiveItem(item);
+    setMenuOpen(false); // Fechar o menu ao clicar em um item
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
     <div className="toptoolbar">
       <nav className="topbar fixed">
-        <ul>
+        <div className="logo">
+          Velvet Roses
+        </div>
+        <div className="menu-icon" onClick={toggleMenu}>
+          {menuOpen ? '✖' : '☰'} {/* Mostra o X ou o ícone de menu dependendo do estado */}
+        </div>
+        <ul className={`menu ${menuOpen ? 'open' : ''}`}>
           <li>
             <a
               href="#home"

@@ -1,5 +1,7 @@
 import BlurFade from "@/components/ui/Blur-Fade";
 import { FadeText } from "@/components/ui/fade-text";
+import './Index.css';
+import { text_content_agenda } from "@/lib/textContent";
 
 export default function AgendaPage() {
   return (
@@ -18,10 +20,9 @@ export default function AgendaPage() {
         text="Em Breve"
       />
       <p className="text-lg text-gray-400 max-w-xl">
-        No momento, não temos datas de shows programadas. Enquanto isso, siga-nos nas redes sociais
-        para ficar por dentro de novidades, lançamentos e eventos futuros!
+        {text_content_agenda.agendaDescription}
       </p>
-      <div className="flex space-x-4">
+      <div className="agenda-social flex space-x-4">
         <a
           href="https://www.instagram.com/slashcover.oficial/"
           target="_blank"
