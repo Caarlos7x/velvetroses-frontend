@@ -8,6 +8,10 @@ body {
   color: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --font-fira-code: 'Fira Code', monospace;

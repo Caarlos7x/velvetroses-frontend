@@ -20,7 +20,7 @@ export default function Topbar() {
     <div className="toptoolbar">
       <nav className="topbar fixed">
         <div className="logo">
-          Velvet Roses
+          <a href="#home">Velvet Roses</a>
         </div>
         <div className="menu-icon" onClick={toggleMenu}>
           {menuOpen ? '✖' : '☰'} {/* Mostra o X ou o ícone de menu dependendo do estado */}
