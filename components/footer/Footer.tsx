@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="footer">
       <div className='footer-logo'>
         <a href="#top" title="Back to top">
-          <Image src="/images/footer-img.jpg" alt="Logo" height={90} width={90} />
+          <Image src="/images/footer-logo.png" alt="Logo" height={90} width={90} />
         </a>
       </div>
       <div className='social-media'>
