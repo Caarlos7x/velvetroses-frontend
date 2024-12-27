@@ -3,13 +3,16 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-fira-code);
   background-color: black;
   color: white;
 }
 
 @layer base {
   :root {
+    --font-fira-code: 'Fira Code', monospace;
+    --font-rubik: 'Rubik', sans-serif;
+    --font-ubuntu: 'Ubuntu', sans-serif;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
