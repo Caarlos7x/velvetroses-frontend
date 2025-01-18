@@ -40,7 +40,7 @@ export default function AgendaPage() {
           YouTube
         </a>
         <a
-          href="https://open.spotify.com/playlist/05tjWuvMCkkOpp8G82tjT6?si=605ac17b1d134dca"
+          href="https://open.spotify.com/playlist/5ut5ONcyXqLe0m15epXAQ3?si=4cd743cbd94e49dd"
           target="_blank"
           rel="noopener noreferrer"
           className="text-green-400 hover:text-green-500"
