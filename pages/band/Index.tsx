@@ -50,7 +50,7 @@ export default function BandIndex() {
           }}
         >
           <Image 
-            src="/images/slash-the-conspirators.jpg" 
+            src="/images/VelvetRoses.jpg" 
             alt="Slash" 
             width={500} 
             height={500} 
