@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Topbar.css';
 
 export default function Topbar() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleClick = (item: string) => {
     setActiveItem(item);
@@ -16,9 +17,22 @@ export default function Topbar() {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="toptoolbar">
-      <nav className="topbar fixed">
+      <nav className={`topbar fixed ${scrolled ? 'scrolled' : ''}`}>
         <div className="logo">
           <a href="#home">Velvet Roses</a>
         </div>

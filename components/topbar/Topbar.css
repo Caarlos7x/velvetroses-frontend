@@ -17,6 +17,10 @@
   z-index: 1000;
 }
 
+.scrolled {
+  background-color: black;
+}
+
 .logo {
   font-size: 24px;
   font-weight: bold;
