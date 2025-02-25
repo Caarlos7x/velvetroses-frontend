@@ -17,7 +17,7 @@ export default function AgendaPage() {
         framerProps={{
           show: { transition: { delay: 0.8 } },
         }}
-        text="Em Breve"
+        text="02 de Abril - Willi Willie Bar e Arqueria"
       />
       <p className="text-lg text-gray-400 max-w-xl">
         {text_content_agenda.agendaDescription}

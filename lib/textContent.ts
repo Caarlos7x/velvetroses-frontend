@@ -10,12 +10,11 @@ export const text_content_band = {
 
 export const text_content_agenda = {
   agendaTitle: `Agenda de Shows`,
-  agendaDescription: `No momento, não temos datas de shows programadas. Enquanto isso, siga-nos nas redes sociais
-        para ficar por dentro de novidades, lançamentos e eventos futuros!`
+  agendaDescription: `Willi Willie Bar e Arqueria é um dos principais pontos de encontro para os fãs de rock em São Paulo. Com uma estrutura completa e um ambiente descontraído, o local é perfeito para quem quer curtir um bom show e se divertir com os amigos. A Velvet Roses Tribute Cover se apresenta no dia 02 de Abril, trazendo o melhor do rock clássico e do hard rock para o público. Não perca essa oportunidade de reviver os maiores sucessos de Slash e Myles Kennedy em uma noite inesquecível!`
 };
 
 export const text_content_contact = {
-  showTime: `1h30`,
+  showTime: `1h30 a 2h de show`,
   targetAudience: `Fãs de rock clássico, hard rock e admiradores da história de um dos maiores guitarristas de todos os tempos.`,
   differentials: `Velvet Roses Tribute Cover é uma banda cover do Slash, guitarrista da banda Guns N' Roses. O grupo é formado por músicos profissionais que buscam reproduzir com fidelidade o som e a energia dos shows do Slash.`
 };
