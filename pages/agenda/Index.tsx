@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import BlurFade from "@/components/ui/Blur-Fade";
 import { FadeText } from "@/components/ui/fade-text";
 import PulsatingButton from "@/components/ui/pulsating-button";
@@ -6,6 +8,24 @@ import { text_content_agenda } from "@/lib/textContent";
 import "./Index.css";
 
 export default function AgendaPage() {
+  const listaRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#lista") {
+      // Rolagem suave com pequeno deslocamento
+      listaRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start", // Alinha o elemento ao topo da tela
+        inline: "nearest", // Melhor alinhamento para o eixo horizontal, se necessário
+      });
+
+      // Adicionando um pequeno deslocamento, se necessário
+      setTimeout(() => {
+        window.scrollBy(0, -50); // Ajuste o valor do deslocamento (-50) conforme necessário
+      }, 500); // Tempo de espera para garantir que a rolagem inicial ocorreu
+    }
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 space-y-8">
       <BlurFade delay={0.25} inView>
@@ -16,14 +36,11 @@ export default function AgendaPage() {
 
       {/* Container centralizado da Agenda */}
       <div className="flex justify-center w-full">
-        <div
-          className="grid w-full max-w-3xl gap-12 text-lg items-center text-center 
-          grid-cols-1 sm:grid-cols-2"
-        >
+        <div className="grid w-full max-w-3xl gap-12 text-lg items-center text-center grid-cols-1 sm:grid-cols-2">
           {/* Coluna 1 - Data e Local */}
-          <div className="font-bold text-white text-center sm:text-left">
+          <div className="font-bold text-white text-center">
             <FadeText
-              className="text-2xl font-bold text-white"
+              className="text-2xl font-bold text-white text-center sm:text-left"
               direction="up"
               framerProps={{ show: { transition: { delay: 0.8 } } }}
               text="02 de Abril - 21h"
@@ -39,8 +56,7 @@ export default function AgendaPage() {
                     href="https://maps.app.goo.gl/kmTQ7maygbGj7bGt7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-3 py-1 text-base text-white 
-                    rounded-lg transition-all hover:scale-105 hover:text-yellow-300"
+                    className="block px-3 py-1 text-base text-white rounded-lg transition-all hover:scale-105 hover:text-yellow-300"
                   >
                     Willi Willie Bar e Arqueria
                   </a>
@@ -48,26 +64,28 @@ export default function AgendaPage() {
               }
             />
 
-            <FadeText
-              className="flex justify-center mt-5 text-xl font-bold text-black"
-              direction="up"
-              framerProps={{ show: { transition: { delay: 0.8 } } }}
-              text={
-                <div className="flex justify-center">
-                  <PulsatingButton>
-                    <a
-                      href="https://forms.gle/zNzASK4vwZ8XpL3j6"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block px-3 py-1 text-base text-black 
-                      rounded-lg transition-all hover:bg-white"
-                    >
-                      Nome na Lista 33% OFF
-                    </a>
-                  </PulsatingButton>
-                </div>
-              }
-            />
+            {/* Botão com rolagem suave */}
+            <div ref={listaRef} id="lista">
+              <FadeText
+                className="flex justify-center mt-5 text-xl font-bold text-black"
+                direction="up"
+                framerProps={{ show: { transition: { delay: 0.8 } } }}
+                text={
+                  <div className="flex justify-center">
+                    <PulsatingButton>
+                      <a
+                        href="https://forms.gle/zNzASK4vwZ8XpL3j6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-3 py-1 text-base text-black rounded-lg transition-all hover:bg-white"
+                      >
+                        Nome na Lista 33% OFF
+                      </a>
+                    </PulsatingButton>
+                  </div>
+                }
+              />
+            </div>
           </div>
 
           {/* Coluna 2 - Informações sobre o local e show */}
