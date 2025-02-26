@@ -21,7 +21,7 @@ export default function AgendaPage() {
 
       // Adicionando um pequeno deslocamento, se necessário
       setTimeout(() => {
-        window.scrollBy(0, -50); // Ajuste o valor do deslocamento (-50) conforme necessário
+        window.scrollBy(0, -200); // Ajuste o valor do deslocamento (-50) conforme necessário
       }, 500); // Tempo de espera para garantir que a rolagem inicial ocorreu
     }
   }, []);
