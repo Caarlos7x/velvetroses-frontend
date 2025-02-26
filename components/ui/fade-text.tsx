@@ -7,7 +7,7 @@ type FadeTextProps = {
   className?: string;
   direction?: "up" | "down" | "left" | "right";
   framerProps?: Variants;
-  text: string;
+  text: React.ReactNode;
 };
 
 export function FadeText({
