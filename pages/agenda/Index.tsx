@@ -1,22 +1,25 @@
 import BlurFade from "@/components/ui/Blur-Fade";
 import { FadeText } from "@/components/ui/fade-text";
 import PulsatingButton from "@/components/ui/pulsating-button";
-import "./Index.css";
-import Image from 'next/image';
+import Image from "next/image";
 import { text_content_agenda } from "@/lib/textContent";
+import "./Index.css";
 
 export default function AgendaPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 space-y-8">
       <BlurFade delay={0.25} inView>
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mt-60">
+        <h2 className="mt-60 text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
           AGENDA
         </h2>
       </BlurFade>
 
       {/* Container centralizado da Agenda */}
       <div className="flex justify-center w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 w-full max-w-3xl text-lg items-center text-center">
+        <div
+          className="grid w-full max-w-3xl gap-12 text-lg items-center text-center 
+          grid-cols-1 sm:grid-cols-2"
+        >
           {/* Coluna 1 - Data e Local */}
           <div className="font-bold text-white text-center sm:text-left">
             <FadeText
@@ -27,14 +30,26 @@ export default function AgendaPage() {
             />
 
             <FadeText
-              className="text-1xl font-bold text-white"
+              className="text-xl font-bold text-white"
               direction="up"
               framerProps={{ show: { transition: { delay: 0.8 } } }}
-              text="Willi Willie Bar e Arqueria"
+              text={
+                <div className="flex justify-center">
+                  <a
+                    href="https://maps.app.goo.gl/kmTQ7maygbGj7bGt7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-1 text-base text-white 
+                    rounded-lg transition-all hover:scale-105 hover:text-yellow-300"
+                  >
+                    Willi Willie Bar e Arqueria
+                  </a>
+                </div>
+              }
             />
 
             <FadeText
-              className="text-xl font-bold text-black flex justify-center mt-5"
+              className="flex justify-center mt-5 text-xl font-bold text-black"
               direction="up"
               framerProps={{ show: { transition: { delay: 0.8 } } }}
               text={
@@ -44,9 +59,10 @@ export default function AgendaPage() {
                       href="https://forms.gle/zNzASK4vwZ8XpL3j6"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-base block px-3 py-1 rounded-lg text-black hover:bg-white transition-all"
+                      className="block px-3 py-1 text-base text-black 
+                      rounded-lg transition-all hover:bg-white"
                     >
-                      Nome na Lista 30%OFF
+                      Nome na Lista 33% OFF
                     </a>
                   </PulsatingButton>
                 </div>
@@ -58,25 +74,25 @@ export default function AgendaPage() {
           <div className="flex flex-col items-center space-y-4">
             <Image
               src={text_content_agenda.agendaImage}
-              alt="img"
+              alt="Imagem do evento"
               width={100}
               height={100}
               className="rounded-lg"
             />
-            {/* Texto */}
-            <div className="text-gray-300 text-base text-justify">
+            <p className="text-base text-gray-300 text-justify">
               {text_content_agenda.agendaDescription}
-            </div>
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="agenda-social flex space-x-4">
+      {/* Redes sociais */}
+      <div className="flex space-x-4 agenda-social">
         <a
           href="https://www.instagram.com/slashcover.oficial/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-500"
+          className="text-blue-400 transition-colors hover:text-blue-500"
         >
           Instagram
         </a>
@@ -84,7 +100,7 @@ export default function AgendaPage() {
           href="https://youtube.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-red-400 hover:text-red-500"
+          className="text-red-400 transition-colors hover:text-red-500"
         >
           YouTube
         </a>
@@ -92,7 +108,7 @@ export default function AgendaPage() {
           href="https://open.spotify.com/playlist/5ut5ONcyXqLe0m15epXAQ3?si=4cd743cbd94e49dd"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-green-400 hover:text-green-500"
+          className="text-green-400 transition-colors hover:text-green-500"
         >
           Spotify
         </a>
@@ -107,6 +123,7 @@ export default function AgendaPage() {
           loop
           playsInline
           controls={false}
+          aria-hidden="true"
         >
           <source src="/video/video.mp4" type="video/mp4" />
           Seu navegador não suporta o elemento de vídeo.
