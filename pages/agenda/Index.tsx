@@ -16,9 +16,9 @@ export default function AgendaPage() {
 
       {/* Container centralizado da Agenda */}
       <div className="flex justify-center w-full">
-        <div className="grid grid-cols-2 gap-12 w-full max-w-3xl text-lg items-center text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 w-full max-w-3xl text-lg items-center text-center">
           {/* Coluna 1 - Data e Local */}
-          <div className="font-bold text-white">
+          <div className="font-bold text-white text-center sm:text-left">
             <FadeText
               className="text-2xl font-bold text-white"
               direction="up"
@@ -52,7 +52,6 @@ export default function AgendaPage() {
                 </div>
               }
             />
-
           </div>
 
           {/* Coluna 2 - Informações sobre o local e show */}
@@ -69,7 +68,6 @@ export default function AgendaPage() {
               {text_content_agenda.agendaDescription}
             </div>
           </div>
-
         </div>
       </div>
 
