@@ -46,7 +46,7 @@ export default function AgendaPage() {
                       rel="noopener noreferrer"
                       className="text-base block px-3 py-1 rounded-lg text-black hover:bg-white transition-all"
                     >
-                      Lista VIP
+                      Nome na Lista
                     </a>
                   </PulsatingButton>
                 </div>
