@@ -5,6 +5,7 @@ import { FadeText } from "@/components/ui/fade-text";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import Image from "next/image";
 import { text_content_agenda } from "@/lib/textContent";
+import ListNameModal from "../../components/modal/ListNameModal"; // Importando o Modal
 import "./Index.css";
 
 export default function AgendaPage() {
@@ -12,17 +13,15 @@ export default function AgendaPage() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash === "#lista") {
-      // Rolagem suave com pequeno deslocamento
       listaRef.current?.scrollIntoView({
         behavior: "smooth",
-        block: "start", // Alinha o elemento ao topo da tela
-        inline: "nearest", // Melhor alinhamento para o eixo horizontal, se necessário
+        block: "start",
+        inline: "nearest",
       });
 
-      // Adicionando um pequeno deslocamento, se necessário
       setTimeout(() => {
-        window.scrollBy(0, -200); // Ajuste o valor do deslocamento (-50) conforme necessário
-      }, 500); // Tempo de espera para garantir que a rolagem inicial ocorreu
+        window.scrollBy(0, -200);
+      }, 500);
     }
   }, []);
 
@@ -64,7 +63,7 @@ export default function AgendaPage() {
               }
             />
 
-            {/* Botão com rolagem suave */}
+            {/* Usando o Modal */}
             <div ref={listaRef} id="lista">
               <FadeText
                 className="flex justify-center mt-5 text-xl font-bold text-black"
@@ -73,14 +72,7 @@ export default function AgendaPage() {
                 text={
                   <div className="flex justify-center">
                     <PulsatingButton>
-                      <a
-                        href="https://forms.gle/zNzASK4vwZ8XpL3j6"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-3 py-1 text-base text-black rounded-lg transition-all hover:bg-white"
-                      >
-                        Nome na Lista 33% OFF
-                      </a>
+                      <ListNameModal />
                     </PulsatingButton>
                   </div>
                 }
