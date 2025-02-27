@@ -1,65 +1,75 @@
-# Web-page Velvet Roses | Slash ft. Myles Kennedy and The Conspirators Brazil Cover
+# Landing-page Velvet Roses | Slash ft. Myles Kennedy and The Conspirators Brazil Cover
 
-Este é um projeto desenvolvido utilizando o framework [Next.js](https://nextjs.org/), inicializado com o `create-next-app`. O objetivo do projeto é fornecer uma aplicação web moderna e eficiente.
+This project uses an alternative and cost-effective approach for managing subscribers and data, utilizing Google Sheets as a database and the Google API to integrate a subscription form. With this solution, it's possible to store data at no additional cost, leveraging Google's free resources, making it ideal for those who want to save on database infrastructure.
 
-## Tecnologias Utilizadas
+## Features
+- **Subscriber Registration**: Allows users to input their data through a simple form.
+  ![Example Image](https://i.imgur.com/Zm59zKE.png)
+  ![Example Image](https://i.imgur.com/1CdA7yv.png)
+- **Automatic Date and Time Stamp**: When new data is entered, a date and time stamp is automatically generated in Google Sheets.
+  ![Example Image](https://i.imgur.com/iGdfav7.png)
+- **Subscriber Count**: Each new registration increments the number of active subscribers.
+- **Responsive Interface**: The frontend was built using Ionic, ensuring a smooth experience on mobile devices.
 
-- **Next.js**: Framework React para desenvolvimento de aplicações web.
-- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
-- **TypeScript**: Superset do JavaScript que adiciona tipagem estática ao código.
-- **Tailwind CSS**: Framework CSS para estilização de componentes.
-- **PostCSS**: Ferramenta para transformações de CSS.
-- **ESLint**: Ferramenta de linting para manter a qualidade do código.
+## Technologies Used
 
-## Estrutura de Pastas
+- **Next.js**: React framework for building web applications.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that adds static typing to the code.
+- **Tailwind CSS**: A CSS framework for styling components.
+- **PostCSS**: Tool for transforming CSS.
+- **ESLint**: Linting tool for maintaining code quality.
 
-A estrutura principal do projeto é a seguinte:
+## Project Structure
 
-- **app/**: Contém os componentes principais da aplicação.
-- **components/**: Inclui componentes reutilizáveis da interface.
-- **lib/**: Contém bibliotecas e utilitários auxiliares.
-- **pages/**: Define as rotas da aplicação.
-- **public/**: Arquivos públicos, como imagens e ícones.
+The main project structure is as follows:
 
-## Instalação e Uso
+- **app/**: Contains the main components of the application.
+- **components/**: Includes reusable UI components.
+- **lib/**: Contains helper libraries and utilities.
+- **pages/**: Defines the routes of the application.
+- **public/**: Public assets like images and icons.
 
-Para rodar o projeto localmente, siga os seguintes passos:
+## Installation and Usage
 
-1. **Clone o repositório**:
+To run the project locally, follow these steps:
+
+1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/Caarlos7x/slashcover.git
-   cd slashcover
+   git clone git@github.com:Caarlos7x/velvetroses-frontend.git
+   cd velvetroses-frontend
 
-2. **Instale as dependências**:
+
+2. **Install the dependencies**:
 ```
 npm install
-# ou
+# or
 yarn install
-# ou
+# or
 pnpm install
-# ou
+# or
 bun install
 ```
 
-3. **Inicie o servidor de desenvolvimento**:
+3. **Start the development server**:
 ```
 npm run dev
-# ou
+# or
 yarn dev
-# ou
+# or
 pnpm dev
-# ou
+# or
 bun dev
 
 ```
 
-4. **Acesse a aplicação**:
+4. **Access the application**:
 
-Abra http://localhost:3000 no seu navegador para ver o resultado.
+Open http://localhost:3000 in your browser to see the result.
 
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests para sugerir melhorias ou corrigir bugs.
+## Contribution
+Contributions are welcome! Feel free to open issues and pull requests to suggest improvements or fix bugs.
 
-## Licença
-Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+## License
+This project is licensed under the MIT license. See the LICENSE file for more details.
