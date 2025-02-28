@@ -37,9 +37,12 @@ export default function ListNameModal() {
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-all duration-300">
-          <div className="modal-content bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
-            <h2 className="text-2xl font-bold mb-4">Enviar Dados</h2>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-all duration-300">
+          <div className="modal-content bg-gray-950 p-6 rounded-lg shadow-lg max-w-lg w-full border border-white">
+            <h2 className="text-2xl text-white font-bold mb-4">Cadastrar Nome na Lista</h2>
+            <p className="text-gray-300 mb-4">
+              Preencha os campos abaixo para cadastrar seu nome na lista e ganhar 33% de desconto.
+            </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
@@ -57,9 +60,15 @@ export default function ListNameModal() {
                 required
                 className="w-full p-2 border border-gray-300 rounded-lg"
               />
-              <button type="submit" className="w-full p-2 bg-yellow-300 text-black rounded-lg hover:bg-blue-600">Enviar</button>
+              <button 
+                type="submit" 
+                className="w-1/2 p-2 bg-black text-white border border-white rounded-lg hover:bg-yellow-300 hover:text-black transform hover:scale-105 transition-all duration-200 ease-in-out">
+                  Enviar
+              </button>
             </form>
-            <button onClick={() => setIsOpen(false)} className="w-full p-2 mt-4 bg-red-500 text-white rounded-lg hover:bg-red-600">
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="w-1/2 p-2 mt-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-200 ease-in-out">
               Fechar
             </button>
           </div>
