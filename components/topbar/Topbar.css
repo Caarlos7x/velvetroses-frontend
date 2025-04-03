@@ -19,6 +19,12 @@
 
 .scrolled {
   background-color: black;
+  border-bottom: .5px solid var(--bg-color-secondary);
+  
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  
+  transition: all 0.8s ease-in-out;
 }
 
 .logo {

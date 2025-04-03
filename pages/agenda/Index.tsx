@@ -2,17 +2,34 @@
 import { useEffect, useRef } from "react";
 import BlurFade from "@/components/ui/Blur-Fade";
 import { FadeText } from "@/components/ui/fade-text";
-import PulsatingButton from "@/components/ui/pulsating-button";
 import Image from "next/image";
 import { text_content_agenda } from "@/lib/textContent";
 import ListNameModal from "../../components/modal/ListNameModal"; // Importando o Modal
 import "./Index.css";
 
+// PulsatingButton modificado para não ser <button>
+const PulsatingButton = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div
+      className="relative text-center cursor-pointer flex justify-center items-center rounded-full animate-pulse"
+      style={{
+        // exemplo de variável se você estiver usando alguma
+        // '--pulse-color': '#fafafa',
+        // '--duration': '1.5s',
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 export default function AgendaPage() {
   const listaRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash === "#lista") {
+    // Verificação de hash SSR-safe
+    const hash = window?.location?.hash;
+    if (hash === "#lista") {
       listaRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -24,6 +41,23 @@ export default function AgendaPage() {
       }, 500);
     }
   }, []);
+
+  const ListaComModal = (
+    <div ref={listaRef} id="lista">
+      <FadeText
+        className="flex justify-center mt-5 text-xl font-bold text-black"
+        direction="up"
+        framerProps={{ show: { transition: { delay: 0.8 } } }}
+        text={
+          <div className="flex justify-center">
+            <PulsatingButton>
+              <ListNameModal deadline="2025-04-02T23:59:00" discount={33} />
+            </PulsatingButton>
+          </div>
+        }
+      />
+    </div>
+  );
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 space-y-8">
@@ -63,21 +97,8 @@ export default function AgendaPage() {
               }
             />
 
-            {/* Usando o Modal */}
-            <div ref={listaRef} id="lista">
-              <FadeText
-                className="flex justify-center mt-5 text-xl font-bold text-black"
-                direction="up"
-                framerProps={{ show: { transition: { delay: 0.8 } } }}
-                text={
-                  <div className="flex justify-center">
-                    <PulsatingButton>
-                      <ListNameModal />
-                    </PulsatingButton>
-                  </div>
-                }
-              />
-            </div>
+            {/* Modal dentro de pulsação */}
+            {ListaComModal}
           </div>
 
           {/* Coluna 2 - Informações sobre o local e show */}
