@@ -12,13 +12,10 @@ export default function ListNameModal({
 }: ListNameModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "" });
-  const [isClient, setIsClient] = useState(false);
   const [isSoldOut, setIsSoldOut] = useState(false);
   const [readyToRender, setReadyToRender] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
-
     const now = new Date();
     const eventDeadline = new Date(deadline);
     setIsSoldOut(now > eventDeadline);
