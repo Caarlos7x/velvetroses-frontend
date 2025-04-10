@@ -6,6 +6,9 @@ import Image from "next/image";
 import { text_content_agenda } from "@/lib/textContent";
 import ListNameModal from "../../components/modal/ListNameModal"; // Importando o Modal
 import "./Index.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
 
 // PulsatingButton modificado para não ser <button>
 const PulsatingButton = ({ children }: { children: React.ReactNode }) => {
@@ -148,18 +151,76 @@ export default function AgendaPage() {
       {/* Vídeo de fundo */}
       <div className="relative w-full h-screen">
         <video
-          className="absolute top-0 left-0 w-full h-full opacity-50"
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-40"
           autoPlay
           muted
           loop
           playsInline
-          controls={false}
+          preload="none"
+          poster="/images/poster.jpg"
           aria-hidden="true"
         >
-          <source src="/video/video.mp4" type="video/mp4" />
+          <source src="/video/video-web.mp4" type="video/mp4" />
           Seu navegador não suporta o elemento de vídeo.
         </video>
+
       </div>
+
+      <div className="w-full px-4 max-w-6xl mt-20">
+        <h3 className="text-2xl font-bold text-center mb-4 mt-20">Assista à Velvet Roses ao vivo</h3>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          <SwiperSlide>
+            <div className="aspect-video">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/A0e1984thFQ"
+                title="Velvet Roses - Rocket Queen"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="aspect-video">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/7Ue133z6Wsk"
+                title="Velvet Roses - Slither"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="aspect-video">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/4tXKzPXQvQM"
+                title="Velvet Roses - Nightrain"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
     </div>
   );
 }

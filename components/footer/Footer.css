@@ -3,12 +3,30 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #000;
+  background-color: #100f0f;
 }
 
 .footer-logo {
   margin-left: 200px;
+  animation: footerPulse 1.3s infinite ease-in-out;
 }
+
+@keyframes footerPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
 
 .footer a {
   color: white;
