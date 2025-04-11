@@ -30,7 +30,7 @@
 .logo {
   font-size: 24px;
   font-weight: bold;
-  color: var(--bg-color-secondary);
+  color: #FACC15;
 }
 
 .menu-icon {
@@ -53,6 +53,10 @@ li {
   display: inline;
 }
 
+.nameBand {
+  color: #FACC15;
+}
+
 a {
   display: block;
   font-size: var(--fs-topbar);
@@ -64,10 +68,12 @@ a {
 
 a:hover {
   font-weight: bold;
+  color: #FACC15;
 }
 
 .active {
   font-weight: bold;
+  color: #FACC15;
 }
 
 /* Versão Mobile */

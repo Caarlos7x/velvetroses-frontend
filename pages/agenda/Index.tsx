@@ -1,36 +1,17 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import BlurFade from "@/components/ui/Blur-Fade";
 import { FadeText } from "@/components/ui/fade-text";
-import Image from "next/image";
-import { text_content_agenda } from "@/lib/textContent";
-import ListNameModal from "../../components/modal/ListNameModal"; // Importando o Modal
-import "./Index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-
-// PulsatingButton modificado para não ser <button>
-const PulsatingButton = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div
-      className="relative text-center cursor-pointer flex justify-center items-center rounded-full animate-pulse"
-      style={{
-        // exemplo de variável se você estiver usando alguma
-        // '--pulse-color': '#fafafa',
-        // '--duration': '1.5s',
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+import WorldTourAgenda from "../../components/tour/Tour";
+import "./Index.css";
 
 export default function AgendaPage() {
   const listaRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Verificação de hash SSR-safe
     const hash = window?.location?.hash;
     if (hash === "#lista") {
       listaRef.current?.scrollIntoView({
@@ -45,79 +26,17 @@ export default function AgendaPage() {
     }
   }, []);
 
-  const ListaComModal = (
-    <div ref={listaRef} id="lista">
-      <FadeText
-        className="flex justify-center mt-5 text-xl font-bold text-black"
-        direction="up"
-        framerProps={{ show: { transition: { delay: 0.8 } } }}
-        text={
-          <div className="flex justify-center">
-            <PulsatingButton>
-              <ListNameModal deadline="2025-04-02T23:59:00" discount={33} />
-            </PulsatingButton>
-          </div>
-        }
-      />
-    </div>
-  );
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 space-y-8">
       <BlurFade delay={0.25} inView>
-        <h2 className="mt-60 text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
+        <h2 className="mt-60 text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center">
           AGENDA
         </h2>
       </BlurFade>
 
-      {/* Container centralizado da Agenda */}
-      <div className="flex justify-center w-full">
-        <div className="grid w-full max-w-3xl gap-12 text-lg items-center text-center grid-cols-1 sm:grid-cols-2">
-          {/* Coluna 1 - Data e Local */}
-          <div className="font-bold text-white text-center">
-            <FadeText
-              className="text-2xl font-bold text-white text-center sm:text-left"
-              direction="up"
-              framerProps={{ show: { transition: { delay: 0.8 } } }}
-              text="02 de Abril - 21h"
-            />
-
-            <FadeText
-              className="text-xl font-bold text-white"
-              direction="up"
-              framerProps={{ show: { transition: { delay: 0.8 } } }}
-              text={
-                <div className="flex justify-center">
-                  <a
-                    href="https://maps.app.goo.gl/kmTQ7maygbGj7bGt7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-3 py-1 text-base text-white rounded-lg transition-all hover:scale-105 hover:text-yellow-300"
-                  >
-                    Willi Willie Bar e Arqueria
-                  </a>
-                </div>
-              }
-            />
-
-            {/* Modal dentro de pulsação */}
-            {ListaComModal}
-          </div>
-
-          {/* Coluna 2 - Informações sobre o local e show */}
-          <div className="flex flex-col items-center space-y-4">
-            <Image
-              src={text_content_agenda.agendaImage}
-              alt="Imagem do evento"
-              width={100}
-              height={100}
-              className="rounded-lg"
-            />
-            <p className="text-base text-gray-300 text-justify">
-              {text_content_agenda.agendaDescription}
-            </p>
-          </div>
-        </div>
+      {/* Agenda com lógica de sold out - um abaixo do outro */}
+      <div className="w-full max-w-4xl px-4">
+        <WorldTourAgenda />
       </div>
 
       {/* Redes sociais */}
@@ -131,7 +50,7 @@ export default function AgendaPage() {
           Instagram
         </a>
         <a
-          href="https://youtube.com"
+          href="https://www.youtube.com/@velvetrosesoficial"
           target="_blank"
           rel="noopener noreferrer"
           className="text-red-400 transition-colors hover:text-red-500"
@@ -162,8 +81,7 @@ export default function AgendaPage() {
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
-
-
+      {/* Carrossel de vídeos ao vivo */}
       <div className="w-full px-4 max-w-6xl mt-20">
         <h3 className="text-2xl font-bold text-center mb-4 mt-20">Assista à Velvet Roses ao vivo</h3>
         <Swiper
@@ -218,7 +136,6 @@ export default function AgendaPage() {
           </SwiperSlide>
         </Swiper>
       </div>
-
     </div>
   );
 }

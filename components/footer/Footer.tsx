@@ -11,8 +11,8 @@ export default function Footer() {
       </div>
       <div className='social-media'>
         <a href="https://www.instagram.com/oficialvelvetroses" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <br />
         <a href="https://www.tiktok.com/@oficialvelvetroses" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.youtube.com/@velvetrosesoficial" target="_blank" rel="noopener noreferrer">YouTube</a>
       </div>
     </div>
   );

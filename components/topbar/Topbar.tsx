@@ -34,7 +34,7 @@ export default function Topbar() {
     <div className="toptoolbar">
       <nav className={`topbar fixed ${scrolled ? 'scrolled' : ''}`}>
         <div className="logo">
-          <a href="#home">Velvet Roses</a>
+          <a className='nameBand' href="#home">Velvet Roses</a>
         </div>
         <div className="menu-icon" onClick={toggleMenu}>
           {menuOpen ? '✖' : '☰'} {/* Mostra o X ou o ícone de menu dependendo do estado */}
