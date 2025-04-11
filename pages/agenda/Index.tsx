@@ -1,15 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import BlurFade from "@/components/ui/Blur-Fade";
-import { FadeText } from "@/components/ui/fade-text";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import WorldTourAgenda from "../../components/tour/Tour";
+import SimpleShowList from "../../components/tour/TourMobile"; // 🔥 Importa o componente novo
 import "./Index.css";
 
 export default function AgendaPage() {
   const listaRef = useRef<HTMLDivElement | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    handleResize(); // chama uma vez ao carregar
+    window.addEventListener("resize", handleResize); // atualiza ao redimensionar
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const hash = window?.location?.hash;
@@ -27,16 +39,18 @@ export default function AgendaPage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 space-y-8">
+    <div className="flex flex-col items-center text-white px-4 pt-12 space-y-8 overflow-x-hidden">
       <BlurFade delay={0.25} inView>
-        <h2 className="mt-60 text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center">
           AGENDA
         </h2>
       </BlurFade>
 
-      {/* Agenda com lógica de sold out - um abaixo do outro */}
-      <div className="w-full max-w-4xl px-4">
-        <WorldTourAgenda />
+      {/* Agenda - alterna entre versão desktop e mobile */}
+      <div className="w-full max-w-4xl px-4" ref={listaRef}>
+        <BlurFade delay={0.25} inView>
+          {isDesktop ? <WorldTourAgenda /> : <SimpleShowList />}
+        </BlurFade>
       </div>
 
       {/* Redes sociais */}
@@ -83,7 +97,9 @@ export default function AgendaPage() {
 
       {/* Carrossel de vídeos ao vivo */}
       <div className="w-full px-4 max-w-6xl mt-20">
-        <h3 className="text-2xl font-bold text-center mb-4 mt-20">Assista à Velvet Roses ao vivo</h3>
+        <h3 className="text-2xl font-bold text-center mb-4 mt-20">
+          Assista à Velvet Roses ao vivo
+        </h3>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}

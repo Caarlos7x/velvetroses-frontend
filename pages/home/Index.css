@@ -84,6 +84,17 @@
 
 /* 📱 Responsividade */
 @media (max-width: 768px) {
+  .hero-container {
+    height: 100svh; /* evita altura gigante em mobile */
+    max-height: 100svh;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .hero-img {
     height: 300px;
     width: 300px;

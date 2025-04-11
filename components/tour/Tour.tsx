@@ -34,7 +34,7 @@ const shows: Show[] = [
 
 export default function WorldTourAgenda() {
   return (
-    <section className="bg-black text-white px-4 py-12">
+    <section className="text-white px-4 py-12 min-h-[300px] w-full">
       <h2 className="text-2xl sm:text-3xl font-bold uppercase mb-6 border-b border-gray-700 pb-2 text-center">
         Shows
       </h2>
@@ -48,22 +48,21 @@ export default function WorldTourAgenda() {
           return (
             <li
               key={index}
-              className="w-full flex flex-col md:flex-row md:justify-between md:items-center border-b border-gray-700 pb-4"
-            >
-              <div className="mb-2 md:mb-0">
+              className="w-full max-w-md mx-auto flex flex-col gap-4 border-b border-gray-700 pb-4 md:max-w-full md:flex-row md:justify-between md:items-center">
+              <div className="flex-1">
                 <p className="font-semibold text-sm text-gray-400">{show.date}</p>
                 <p className="text-lg font-bold whitespace-pre-line">{show.event}</p>
                 <p className="font-semibold text-sm text-gray-400">{show.venue}</p>
                 <p className="text-yellow-400 text-sm">{show.location}</p>
-                <div className="flex space-x-4 mt-2 text-xs md:text-sm">
+                <div className="flex flex-wrap gap-4 mt-2 text-xs">
                   <a
                     href={googleMapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-1 text-blue-300 hover:underline"
                   >
-                    <FaMapMarkedAlt className="text-[14px] md:text-xs" />
-                    <span className="text-[14px] md:text-xs">Google Maps</span>
+                    <FaMapMarkedAlt className="text-xs" />
+                    <span className="text-xs">Google Maps</span>
                   </a>
                   <a
                     href={wazeLink}
@@ -71,13 +70,13 @@ export default function WorldTourAgenda() {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-1 text-purple-300 hover:underline"
                   >
-                    <FaWaze className="text-[14px] md:text-xs" />
-                    <span className="text-[14px] md:text-xs">Waze</span>
+                    <FaWaze className="text-xs" />
+                    <span className="text-xs">Waze</span>
                   </a>
                 </div>
               </div>
 
-              <div className="mt-3 md:mt-0">
+              <div className="w-full md:w-auto flex justify-center md:justify-end">
                 <ListNameModal
                   deadline={show.deadline}
                   discount={show.discount}
