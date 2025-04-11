@@ -6,12 +6,14 @@ interface ListNameModalProps {
   discount?: number;
   deadline: string;
   customButtonClass?: string;
+  price?: number;
 }
 
 export default function ListNameModal({
   discount = 0,
   deadline,
   customButtonClass,
+  price,
 }: ListNameModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "" });
@@ -72,11 +74,19 @@ export default function ListNameModal({
             <h2 className="text-2xl text-white font-bold mb-4 text-center">
               Cadastrar Nome na Lista
             </h2>
-            <p className="text-gray-300 mb-6 text-sm text-center">
+
+            <p className="text-gray-300 mb-4 text-sm text-center">
               {discount && discount > 0
-                ? `Preencha seu nome na lista para garantir um desconto de ${discount}% OFF.`
-                : "Preencha os campos abaixo para cadastrar seu nome na lista"}
+                ? `Garanta ${discount}% de desconto!`
+                : "Coloque seu nome para garantir a entrada!"}
             </p>
+
+            {/* Exibe o valor se houver */}
+            {price && (
+              <p className="text-yellow-300 text-sm text-center font-medium mb-4">
+                Valor da entrada: R$<strong>{price}</strong>
+              </p>
+            )}
 
             {feedback === null && (
               <form onSubmit={handleSubmit} className="space-y-4">

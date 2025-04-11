@@ -22,14 +22,22 @@ const shows: Show[] = [
     deadline: "2025-04-02T22:00:00",
     discount: 33,
   },
-  {
-    date: "19 de Abril, Sábado, 2025",
-    event: "Blackbird Rock Beer",
-    venue: "Rua Carijós, 131",
-    location: "Santo André, SP",
-    deadline: "2025-04-19T22:00:00",
-    discount: 0,
-  },
+  // {
+  //   date: "26 de Abril, Sábado, 2025",
+  //   event: "Hot Pub SA",
+  //   venue: "Av. Arthur de Queiroz, 75",
+  //   location: "Santo André, SP",
+  //   deadline: "2025-04-26T22:00:00",
+  //   discount: 0,
+  // },
+  // {
+  //   date: "10 de Maio, Sábado, 2025",
+  //   event: "Blackbird Rock Beer",
+  //   venue: "Rua Carijós, 131",
+  //   location: "Santo André, SP",
+  //   deadline: "2025-05-10T22:00:00",
+  //   discount: 0,
+  // },
 ];
 
 export default function WorldTourAgenda() {

@@ -12,6 +12,7 @@ interface Show {
   location: string;
   deadline: string;
   discount?: number;
+  price?: number; // ✅ Corrigido para opcional
 }
 
 const shows: Show[] = [
@@ -23,14 +24,23 @@ const shows: Show[] = [
     deadline: "2025-04-02T22:00:00",
     discount: 33,
   },
-  {
-    date: "19 de Abril, Sábado, 2025",
-    event: "Blackbird Rock Beer",
-    venue: "Rua Carijós, 131",
-    location: "Santo André, SP",
-    deadline: "2025-04-19T22:00:00",
-    discount: 0,
-  },
+  // {
+  //   date: "26 de Abril, Sábado, 2025",
+  //   event: "Hot Pub SA",
+  //   venue: "Av. Arthur de Queiroz, 75",
+  //   location: "Santo André, SP",
+  //   deadline: "2025-04-26T22:00:00",
+  //   discount: 0,
+  // },
+  // {
+  //   date: "10 de Maio, Sábado, 2025",
+  //   event: "Blackbird Rock Beer",
+  //   venue: "Rua Carijós, 131",
+  //   location: "Santo André, SP",
+  //   deadline: "2025-05-10T22:00:00",
+  //   discount: 0,
+  //   price: 10,
+  // },
 ];
 
 export default function SimpleShowList() {
@@ -62,7 +72,6 @@ export default function SimpleShowList() {
                 {show.location}
               </p>
 
-              {/* Corrigido: só mostra se o desconto for > 0 */}
               {show.discount !== undefined && show.discount > 0 && (
                 <p className="text-green-400 text-sm font-semibold pt-1">
                   {show.discount}% de desconto até{" "}
@@ -75,6 +84,7 @@ export default function SimpleShowList() {
               <ListNameModal
                 deadline={show.deadline}
                 discount={show.discount}
+                price={show.price} // ✅ aqui passa o preço
                 customButtonClass="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
               />
             </div>
