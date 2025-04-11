@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+public/video/video-web.mp4
 
 # next.js
 /.next/

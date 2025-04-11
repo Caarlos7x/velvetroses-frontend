@@ -149,7 +149,7 @@ export default function AgendaPage() {
       </div>
 
       {/* Vídeo de fundo */}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="relative w-full h-[40vh] md:h-screen overflow-hidden">
         <iframe
           className="absolute top-0 left-0 w-full h-full object-cover opacity-70"
           src="https://www.youtube.com/embed/A0e1984thFQ?autoplay=1&mute=1&loop=1&playlist=A0e1984thFQ&controls=0&showinfo=0&modestbranding=1"
@@ -161,6 +161,7 @@ export default function AgendaPage() {
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
+
 
 
       <div className="w-full px-4 max-w-6xl mt-20">

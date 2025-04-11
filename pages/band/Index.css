@@ -1,9 +1,5 @@
 .container {
   margin: 0 auto;
-
-  h2 {
-    text-align: center;
-  }
 }
 
 .column {
@@ -19,31 +15,16 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Versão Mobile */
+/* Responsivo para telas menores */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    padding: 10px;
-  }
-
   .column {
     width: 100%;
     padding: 10px;
-    transform: translateX(0) !important;
-  }
-
-  .img-band {
-    display: none;
-  }
-
-  .image {
-    display: none;
+    transform: none !important;
   }
 
   .text-lg {
     text-align: justify;
-    margin: 0 auto;
     font-size: 1rem;
   }
 }
