@@ -2,9 +2,15 @@ import { google } from 'googleapis';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") return res.status(405).json({ message: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
 
-  const { name, email } =req.body;
+  const { name, email, event } = req.body;
+
+  if (!name || !email || !event) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  }
 
   try {
     const auth = new google.auth.GoogleAuth({
@@ -18,18 +24,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const sheets = google.sheets({ version: 'v4', auth });
 
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-    const range = 'A:B';
+    const range = 'A:C';
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range,
       valueInputOption: 'RAW',
-      requestBody: { values: [[name, email]] },
+      requestBody: {
+        values: [[name, email, event]],
+      },
     });
 
-    res.status(200).json({ message: 'Data sent' });
+    res.status(200).json({ message: 'Data sent successfully' });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error sending data' });
+    console.error('Error appending data:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 }

@@ -7,6 +7,7 @@ interface ListNameModalProps {
   deadline: string;
   customButtonClass?: string;
   price?: number;
+  eventName: string;
 }
 
 export default function ListNameModal({
@@ -14,6 +15,7 @@ export default function ListNameModal({
   deadline,
   customButtonClass,
   price,
+  eventName,
 }: ListNameModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "" });
@@ -33,8 +35,12 @@ export default function ListNameModal({
 
     const response = await fetch("/api/subscribe", {
       method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        event: eventName,
+      }),
     });
 
     if (response.ok) {
@@ -81,7 +87,6 @@ export default function ListNameModal({
                 : "Coloque seu nome para garantir a entrada!"}
             </p>
 
-            {/* Exibe o valor se houver */}
             {price && (
               <p className="text-yellow-300 text-sm text-center font-medium mb-4">
                 Valor da entrada: R$<strong>{price}</strong>

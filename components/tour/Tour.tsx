@@ -80,6 +80,7 @@ export default function WorldTourAgenda() {
                 <ListNameModal
                   deadline={show.deadline}
                   discount={show.discount}
+                  eventName={show.event}
                   customButtonClass="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
                 />
               </div>
