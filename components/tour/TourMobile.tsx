@@ -74,10 +74,12 @@ export default function SimpleShowList() {
 
             <div className="mt-2 flex justify-center">
               <ListNameModal
+                eventName={show.event}
+                eventDate="2025-04-02"
+                eventTime="22:00"
+                eventLocation="Alameda dos Pamaris, 30 - Moema, SP"
                 deadline={show.deadline}
                 discount={show.discount}
-                price={show.price}
-                eventName={show.event}
                 customButtonClass="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
               />
             </div>

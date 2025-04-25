@@ -8,6 +8,9 @@ interface ListNameModalProps {
   customButtonClass?: string;
   price?: number;
   eventName: string;
+  eventDate: string; // yyyy-mm-dd
+  eventTime: string;
+  eventLocation: string;
 }
 
 export default function ListNameModal({
@@ -16,6 +19,9 @@ export default function ListNameModal({
   customButtonClass,
   price,
   eventName,
+  eventDate,
+  eventTime,
+  eventLocation,
 }: ListNameModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "" });
@@ -40,6 +46,9 @@ export default function ListNameModal({
         name: formData.name,
         email: formData.email,
         event: eventName,
+        date: eventDate, // yyyy-mm-dd
+        time: eventTime,
+        location: eventLocation,
       }),
     });
 
@@ -56,9 +65,7 @@ export default function ListNameModal({
   return (
     <div>
       <button
-        onClick={() => {
-          if (!isSoldOut) setIsOpen(true);
-        }}
+        onClick={() => !isSoldOut && setIsOpen(true)}
         disabled={isSoldOut}
         className={`block transition-all ${
           isSoldOut
@@ -75,7 +82,7 @@ export default function ListNameModal({
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-all duration-300 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
           <div className="modal-content bg-gray-950 p-6 rounded-lg shadow-lg max-w-lg w-full border border-white">
             <h2 className="text-2xl text-white font-bold mb-4 text-center">
               Cadastrar Nome na Lista
@@ -118,7 +125,7 @@ export default function ListNameModal({
                 <div className="flex justify-center space-x-4 pt-2">
                   <button
                     type="submit"
-                    className="px-6 py-2 bg-black text-white border border-white rounded-lg hover:bg-yellow-300 hover:text-black transform hover:scale-105 transition-all duration-200 ease-in-out"
+                    className="px-6 py-2 bg-black text-white border border-white rounded-lg hover:bg-yellow-300 hover:text-black transform hover:scale-105 transition-all"
                   >
                     Enviar
                   </button>
@@ -128,7 +135,7 @@ export default function ListNameModal({
                       setIsOpen(false);
                       setFeedback(null);
                     }}
-                    className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-200 ease-in-out"
+                    className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all"
                   >
                     Fechar
                   </button>
@@ -153,7 +160,7 @@ export default function ListNameModal({
 
             {feedback === "error" && (
               <div className="text-center text-red-400 font-semibold space-y-4">
-                <p>❌ Ocorreu um erro ao enviar. Tente novamente.</p>
+                <p>❌ Ocorreu um erro ao enviar os dados. Tente novamente.</p>
                 <button
                   className="px-6 py-2 bg-white text-black rounded-lg hover:bg-yellow-300 transition"
                   onClick={() => setFeedback(null)}
