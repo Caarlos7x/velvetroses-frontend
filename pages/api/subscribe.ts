@@ -2,13 +2,12 @@ import { google } from 'googleapis';
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 
-// Utilitário para gerar link de Google Agenda com descrição personalizada
 function generateGoogleCalendarLink(eventName: string, date: string, time: string, location: string) {
   const [year, month, day] = date.split('-');
   const [hour, minute] = time.split(':');
 
   const startDate = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute)));
-  const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000); // Evento com duração de 2h
+  const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
 
   const formatDate = (date: Date) => date.toISOString().replace(/[-:]|\.\d{3}/g, "");
   const dates = `${formatDate(startDate)}/${formatDate(endDate)}`;
@@ -34,7 +33,6 @@ Chame os amigos e chegue cedo para garantir o melhor lugar!
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
-// Utilitário para formatar a data para padrão brasileiro
 function formatDateToBrazil(dateString: string): string {
   const [year, month, day] = dateString.split("-");
   return `${day}/${month}/${year}`;
@@ -52,7 +50,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    // 1. Envia para a planilha
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -74,7 +71,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
     });
 
-    // 2. Envia e-mail de confirmação
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {

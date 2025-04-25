@@ -8,28 +8,34 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaLocationArrow } from "react-icons/fa";
 interface Show {
   event: string;
   date: string;
+  dateIso: string;
+  time: string;
   venue: string;
   location: string;
   deadline: string;
   discount?: number;
-  price?: number; // ✅ Corrigido para opcional
+  price?: number;
 }
 
 const shows: Show[] = [
   {
     date: "02 de Abril, Quarta-feira, 2025",
+    dateIso: "2025-04-02",
+    time: "21:00",
     event: "Willi Willie Bar e Arquearia",
     venue: "Alameda dos Pamaris, 30",
     location: "Moema, SP",
-    deadline: "2025-04-02T22:00:00",
+    deadline: "2025-04-01T22:00:00",
     discount: 33,
   },
   {
     date: "18 de Maio, Sábado, 2025",
+    dateIso: "2025-05-18",
+    time: "19:00",
     event: "Blackbird Rock Beer",
     venue: "Rua Carijós, 131",
     location: "Santo André, SP",
-    deadline: "2025-05-18T22:00:00",
+    deadline: "2025-05-17T22:00:00",
     discount: 0,
     price: 10,
   },
@@ -75,11 +81,12 @@ export default function SimpleShowList() {
             <div className="mt-2 flex justify-center">
               <ListNameModal
                 eventName={show.event}
-                eventDate="2025-04-02"
-                eventTime="22:00"
-                eventLocation="Alameda dos Pamaris, 30 - Moema, SP"
+                eventDate={show.dateIso}
+                eventTime={show.time}
+                eventLocation={`${show.venue} - ${show.location}`}
                 deadline={show.deadline}
                 discount={show.discount}
+                price={show.price}
                 customButtonClass="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
               />
             </div>
