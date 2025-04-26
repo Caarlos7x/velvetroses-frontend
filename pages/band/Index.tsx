@@ -17,7 +17,7 @@ export default function BandIndex() {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
-    handleResize(); // Inicializa corretamente ao montar o componente
+    handleResize();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
