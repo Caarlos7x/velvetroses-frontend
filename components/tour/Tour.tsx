@@ -3,9 +3,12 @@
 import React from "react";
 import ListNameModal from "@/components/modal/ListNameModal";
 import { FaMapMarkedAlt, FaWaze } from "react-icons/fa";
+import { Button } from "../ui/button";
 
 interface Show {
   event: string;
+  eventType?: "free" | "paid";
+  ticketUrl?: string;
   date: string;
   dateIso: string;
   time: string;
@@ -34,6 +37,18 @@ const shows: Show[] = [
     venue: "Rua Carijós, 131",
     location: "Santo André, SP",
     deadline: "2025-05-17T22:00:00",
+    discount: 0,
+  },
+  {
+    date: "08 de Agosto, Sexta, 2025",
+    dateIso: "2025-08-08",
+    time: "17:00",
+    event: "Kenko Festval 4º edição",
+    eventType: "paid",
+    ticketUrl: "https://shotgun.live/pt-br/festivals/kenko-festival-4-edicao?utm_source=headersite",
+    venue: "Rua Taquari, 546 - Mooca, São Paulo",
+    location: "São Paulo, SP",
+    deadline: "2025-08-08T15:00:00",
     discount: 0,
   },
 ];
@@ -83,15 +98,31 @@ export default function WorldTourAgenda() {
               </div>
 
               <div className="w-full md:w-auto flex justify-center md:justify-end">
-                <ListNameModal
-                  eventName={show.event}
-                  eventDate={show.dateIso}
-                  eventTime={show.time}
-                  eventLocation={`${show.venue} - ${show.location}`}
-                  deadline={show.deadline}
-                  discount={show.discount}
-                  customButtonClass="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
-                />
+                {show.eventType === "paid" && show.ticketUrl ? (
+                  <Button
+                    asChild
+                    variant="default"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
+                  >
+                    <a
+                      href={show.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Comprar Ingressos
+                    </a>
+                  </Button>
+                ) : (
+                  <ListNameModal
+                    eventName={show.event}
+                    eventDate={show.dateIso}
+                    eventTime={show.time}
+                    eventLocation={`${show.venue} - ${show.location}`}
+                    deadline={show.deadline}
+                    discount={show.discount}
+                    customButtonClass="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition"
+                  />
+                )}
               </div>
             </li>
           );
