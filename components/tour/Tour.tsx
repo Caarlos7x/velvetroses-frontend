@@ -30,16 +30,6 @@ const shows: Show[] = [
     discount: 33,
   },
   {
-    date: "18 de Maio, Sábado, 2025",
-    dateIso: "2025-05-18",
-    time: "19:00",
-    event: "Blackbird Rock Beer",
-    venue: "Rua Carijós, 131",
-    location: "Santo André, SP",
-    deadline: "2025-05-17T22:00:00",
-    discount: 0,
-  },
-  {
     date: "08 de Agosto, Sexta, 2025",
     dateIso: "2025-08-08",
     time: "17:00",
